@@ -1,0 +1,25 @@
+services:
+  target:
+    image: nginx:alpine
+    container_name: target-k6
+    volumes:
+      - vol-k6:/data
+    networks:
+      - lab-network
+
+  attacker:
+    image: alpine:3.20
+    container_name: attacker
+    command: sh -c "sleep infinity"
+    networks:
+      - lab-network
+
+volumes:
+  vol-k6:
+    name: vol-k6
+    external: true
+
+networks:
+  lab-network:
+    driver: bridge
+    internal: true

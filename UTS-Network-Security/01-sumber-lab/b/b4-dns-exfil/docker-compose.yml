@@ -1,0 +1,27 @@
+
+services:
+  dns:
+    image: ubuntu/bind9:latest
+    container_name: dns-k6
+    environment:
+      - BIND9_USER=root
+      - TZ=Asia/Jakarta
+    entrypoint: ["/usr/sbin/named"]
+    command: ["-u", "root", "-f", "-c", "/etc/bind/named.conf"]
+    volumes:
+      - ./named.conf:/etc/bind/named.conf:ro
+      - ./db.k6.exfil.lab:/var/lib/bind/db.k6.exfil.lab:ro
+    networks:
+      - dns-lab
+
+  attacker:
+    image: uts-kali-tools:latest
+    container_name: attacker-dns-k6
+    command: sleep infinity
+    networks:
+      - dns-lab
+
+networks:
+  dns-lab:
+    driver: bridge
+    internal: true

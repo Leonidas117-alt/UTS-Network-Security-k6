@@ -1,0 +1,20 @@
+services:
+  target:
+    image: nginx:alpine
+    container_name: target-tcp-k6
+    networks:
+      - tcp-lab
+
+  attacker:
+    image: uts-kali-tools:latest
+    container_name: attacker-tcp-k6
+    command: sleep infinity
+    cap_add:
+      - NET_RAW
+    networks:
+      - tcp-lab
+
+networks:
+  tcp-lab:
+    driver: bridge
+    internal: true

@@ -1,0 +1,7 @@
+﻿docker : client @0x77bfaa033000 172.21.0.3#41942 (3234353532303131333736.k6.exfil.lab): query: 3234353532303131333736.k6.exfil.lab IN A +E(0)K (172.21.0.2)
+At line:1 char:1
++ docker logs dns-k6 2>&1 | Out-File -Encoding utf8 .\dns-k6.log
++ ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (client @0x77bfa...)K (172.21.0.2):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

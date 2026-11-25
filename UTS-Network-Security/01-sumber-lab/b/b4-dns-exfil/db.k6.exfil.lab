@@ -1,0 +1,12 @@
+$TTL 60
+@   IN  SOA ns.k6.exfil.lab. admin.k6.exfil.lab. (
+        2026112401
+        3600
+        900
+        604800
+        60
+)
+
+@       IN  NS  ns.k6.exfil.lab.
+ns      IN  A   172.21.0.2
+*       IN  A   172.21.0.2
